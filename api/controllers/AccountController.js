@@ -8,25 +8,39 @@
 module.exports = {
   
     info_account: async function (req, res) {
-        const userid = req.query.userid
+        try{
+        const userid = req.params.id
         console.log("userid", userid);
-        await Account.find({ userid: userid })
-            .then(async data => {
-                await User.find({})
-                    .then(result => {
+        
+        const user = await Account.find({ where: {accountid: userid} })
+ 
+        
+        console.log('ghfchvgh',user);
+        return res.view('dashboard', {  accountid: user })
+        }
+        // .then((data)=>{
+        //     console.log('jgvhgvh',data);
+        //     res.view('dashboard', {  accountid: data })
+        // })
+            // .then( data => {
+            //     console.log('jgvhgvh',data);
+            //     res.view('dashboard', {  accountid: data })
+            //     // await User.find({})
+            //     //     .then(result => {
                  
-                        console.log("data", data)
+            //     //         console.log("data", data)
                   
-                        res.render('dashboard', {  accountid: data, result: result })
-                        console.log(accountid)
-                    })
-                    .catch(err => {
-                        console.log(err);
-                    })
-            })
-            .catch(err => {
+            //     //         res.render('dashboard', {  accountid: data, result: result })
+              
+            //     //     })
+            //         // .catch(err => {
+            //         //     console.log(err);
+            //         // })
+            // })
+            catch(err){
                 console.log(err);
-            })
+            }
+        
      },
      
 };

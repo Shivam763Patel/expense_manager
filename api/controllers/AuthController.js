@@ -58,19 +58,22 @@ module.exports = {
                 // });
 
                 await Account.create({ 
-                    users: result.id ,
+                    accountid: result.id ,
                     accountname:"default",
         
                 });
-                return res.cookie('token',token).status(200).redirect('/login')
-
+                 res.cookie('tokenall',token,{
+                    httpOnly: true
+                 })
+                 console.log(res.cookie)
+                 return res.status(200).redirect('/login')
                 
                 
             }       
                 else
                 {
                     return res.status(500).send({
-                        
+                      
                         message: 'Signup failed',
                         
                     })
@@ -118,14 +121,16 @@ module.exports = {
             console.log('userdata for login',userData.password)
             console.log('userdata',userData)
             bcrypt.compare(password, userData.password, function (err, result) {
-
+                console.log(result)
                 if(err){
 
                     console.log(err)
                 }
                 else{
-
-                    res.redirect('/dashboarduser')
+                    console.log('ghfhf',userData);
+                    const id= userData.id
+                    console.log('hghjkgufy',id)
+                    res.redirect('/dashboarduser/'+id)
                 }
             })
             

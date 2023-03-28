@@ -27,6 +27,7 @@ module.exports.routes = {
 
   'post /signup': 'AuthController.signup',
 
+
   'get /login': 
   {
     view: 'login'
@@ -36,16 +37,17 @@ module.exports.routes = {
   'post /login': 'AuthController.login',
 
   //dashboard
-  'get /dashboard/:id': { view: 'dashboard'},
-  'get /dashboarduser': 'AccountController.info_account',
+  'get /dashboarduser': { view: 'dashboard'},
+  'get /dashboarduser/:id': 'AccountController.info_account',
 
   //Add user to my account
   'get /dashboarduser/adduseraccount': {view: 'addUserAccount'},
-  'post /dashboarduser/adduseraccount': 'UserController.addUserAccount',
+  'post /dashboarduser/adduseraccount/:id': 'UserController.addUserAccountData',
   
 //Edit user into my account
 'get /dashboarduser/edituseraccount/:id': 'UserController.editUserAccountpage',
-  
+'post /dashboarduser/edituseraccount/:id': 'UserController.editUserAccount',
+
 
 'get /dashboarduser/logout': 'AuthController.logout'
 

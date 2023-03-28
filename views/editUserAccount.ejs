@@ -1,16 +1,16 @@
 <ol class="breadcrumb"> 
-    <li class="breadcrumb-item"> <a href="/dashboarduser"> Article </a> </li>
+    <li class="breadcrumb-item"> <a href="/dashboarduser/"> Home </a> </li>
     <li class="breadcrumb-item active"> Edit </li>
     </ol>
     
     <h1 class ="display-4"> Edit Article</h1>
     
-    <form method="post" action="/dashboarduser/edituseraccount/edit/<%= articles.id %>">
+    <form method="post" action="/dashboarduser/edituseraccount/<%= articles.id %>">
     
         <div class="form-group">
             <label for="title"> Account name </label>
             
-            <input type="text" name="title" class="form-control" value= "<%= articles.accountname %>" required="true">
+            <input type="text" name="accountname" class="form-control" value= "<%= articles.accountname %>" required="true">
              
         </div>
 

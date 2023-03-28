@@ -17,19 +17,19 @@ module.exports.policies = {
   * (`true` allows public access)                                            *
   *                                                                          *
   ***************************************************************************/
-// AuthController: {
+AuthController: {
 
-//   '*': 'isAuth',
-//   'signup': true,
-//   'login': true
-// },
+  '*': 'isAuth',
+  'signup': true,
+  'login': true
+},
 
-// UserController: {
-//   '*' : 'isAuth'
+UserController: {
+  '*' : 'isAuth'
 
-// },
-// AccountController: {
-//   '*' : 'isAuth'
-// }
+},
+AccountController: {
+  '*' : 'isAuth'
+}
 
 };
