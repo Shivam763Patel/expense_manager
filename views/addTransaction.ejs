@@ -1,0 +1,59 @@
+<ol class="breadcrumb"> 
+    <li class="breadcrumb-item"> <a href="/dashboarduser/<%= articles %>"> Home </a> </li>
+    <li class="breadcrumb-item active"> Add Account </li>
+    </ol>
+    
+    <h1 class ="display-4"> Add Transaction</h1>
+    
+    <form method="post" action="/dashboarduser/addtransactionToaccount/<%= articles.id %>">
+    
+        <div class="form-group">
+            <label for="user-acc"> Account name </label>
+            
+            <input type="text" name="accountName" class="form-control" required="true" placeholder="Enter account name to add account">
+             
+
+        </div>
+
+           
+        <div class="form-group">
+            <label for="detail"> Account Type </label>
+            
+          
+            <select class="form-select" 
+
+            name="accountType" 
+            aria-label="Default select example" 
+            id="accountType" >
+
+            <option selected>Open this select menu</option>
+            <option value="Expense">Expense</option>
+            <option value="Income">Income</option>
+            <option value="Transfer">Transfer</option>
+
+          </select>
+    </div>
+
+    <div class="form-group">
+        <label for="user-acc"> Transaction Amount</label>
+        
+        <input type="number" name="transactionAmount" class="form-control" required="true" placeholder="Enter your amount ">
+         
+    </div>
+
+    <div class="form-group">
+
+        <label for="Transaction"> Transaction Date</label>
+
+        <input type="date" 
+
+                        class="form-control"
+                        name="transactionDate"
+                         id="transactionDate" >
+    </div>
+
+        <input type="submit" type="button" class="btn btn-primary" >
+
+    </form>
+
+    

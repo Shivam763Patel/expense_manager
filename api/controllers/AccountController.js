@@ -16,7 +16,7 @@ module.exports = {
  
         
         console.log('ghfchvgh',user);
-        return res.view('dashboard', {  accountid: user })
+        return res.view('dashboard', {  accountid: user, all: userid })
         }
         // .then((data)=>{
         //     console.log('jgvhgvh',data);

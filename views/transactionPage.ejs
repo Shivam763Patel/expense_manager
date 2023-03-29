@@ -173,77 +173,41 @@ ul ul a {
     
     <div class="wrapper">
       <!-- Sidebar -->
-      <nav id="sidebar">
-          <div class="sidebar-header">
-              <h3> Expense Manager </h3>
-          </div>
-  
-          <ul class="list-unstyled components">
-              <p>Welcome</p>
-              <li class="active">
-                  <a href="/dashboarduser/adduseraccount/<%= all%> " aria-expanded="false" class="ff">Add new account</a>
-                
-              </li>
 
-              <li class="sec">
-                <a href="/dashboarduser/logout" aria-expanded="false" class="get user"> Logout </a>
-              
-            </li>
-
-              <li class="sec">
-                <a href="/user" aria-expanded="false" class="get user">User detail</a>
-              
-            </li>
-          </ul>
-      </nav>
 
       <main>
     <div class="container">
         <div class="row">
-            <div class="col-md-12">
-      
-      <div id="content">
-        <nav class="navbar navbar-expand-lg navbar-light bg-light">
-            <div class="container-fluid">
-    
-                <button type="button" id="sidebarCollapse" class="btn btn-info">
-                    <i class="fas fa-align-left"></i>
-                    <span> Menu</span>
-                </button>
-    
-            </div>
-        </nav>
-    </div>
-  </div>
+            
 
 <div class="home-course-title" id="title2"> 
-    Account list new
+    Transaction list for Account
 </div>
 
      <% 
      
-     if(accountid.length)  { %> 
+     if(transactionid.length)  { %> 
         <div class="row">
 
-        <% for(let data of accountid)  { %>
+        <% for(let data of transactionid)  { %>
             <div class="col-md-3">
 
                 <div class="account">
-                    <h3> <%= data.accountname %> </h3>
+                    <h3> <%= data.accountName %> </h3>
                     <hr>
       
                     <div class="my-2">
 
                         <a href="/dashboarduser/edituseraccount/<%= data.id %> " class="btn btn-primary"> Edit </a>
 
-                        <a href="/dashboarduser/tr/<%= data.id %> " class="btn btn-primary"> View </a>
 
                           <form class="d-inline" action="/dashboarduser/delete/<%= data.id %>" method="post"> 
+
                             <input type="submit" value="Delete" class="btn btn-danger"> 
 
-                            <br> </br>
+                         
 
-                            <a href="/dashboarduser/addtransactionToaccount/<%= data.id %> " class="btn btn-success"> Add transaction </a>
+                   
         
                           </form>
         
@@ -277,3 +241,4 @@ $('#sidebarCollapse').on('click', function () {
 
 });
 </script>
+

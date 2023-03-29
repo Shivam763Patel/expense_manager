@@ -39,15 +39,21 @@ module.exports.routes = {
   //dashboard
   'get /dashboarduser': { view: 'dashboard'},
   'get /dashboarduser/:id': 'AccountController.info_account',
+  'get /dashboarduser/tr/:id': 'TransactionController.viewTranscation',
 
   //Add user to my account
-  'get /dashboarduser/adduseraccount': {view: 'addUserAccount'},
-  'post /dashboarduser/adduseraccount/:id': 'UserController.addUserAccountData',
+  'get /dashboarduser/adduseraccount/:id': 'UserController.addUserAccountPage',
+  'post /dashboarduser/adduseraccount/:id': 'UserController.addUserAccount',
   
 //Edit user into my account
 'get /dashboarduser/edituseraccount/:id': 'UserController.editUserAccountpage',
 'post /dashboarduser/edituseraccount/:id': 'UserController.editUserAccount',
 
+//Add transaction for account
+  'get /dashboarduser/addtransactionToaccount/:id': 'TransactionController.addTransactionPage',
+  'post /dashboarduser/addtransactionToaccount/:id': 'TransactionController.addTransaction',
+
+//List of transaction for account
 
 'get /dashboarduser/logout': 'AuthController.logout'
 

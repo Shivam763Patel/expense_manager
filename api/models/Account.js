@@ -23,7 +23,17 @@ module.exports =
           {
               model: 'user'
           },
+
+
+        transactionid:
+        {
+            collection: 'transaction',
+            via: 'transactionid'
+
+      
+        }
           
+
     
     
   },

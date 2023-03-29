@@ -107,7 +107,7 @@ module.exports = {
           
 
             const userData = await User.findOne({ email: email });
-           
+            // const userData = await User.find({ where: {email: email} })
 
             console.log('userdata',userData)
             if (!userData) 
