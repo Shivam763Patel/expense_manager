@@ -39,21 +39,40 @@ module.exports.routes = {
   //dashboard
   'get /dashboarduser': { view: 'dashboard'},
   'get /dashboarduser/:id': 'AccountController.info_account',
-  'get /dashboarduser/tr/:id': 'TransactionController.viewTranscation',
 
-  //Add user to my account
+  // //List of transaction for account
+  // 'get /dashboarduser/tr/:id': 'TransactionController.viewTranscation',
+
+  //Add user to my account by name
   'get /dashboarduser/adduseraccount/:id': 'UserController.addUserAccountPage',
   'post /dashboarduser/adduseraccount/:id': 'UserController.addUserAccount',
+
+    //Add user to my account by Email
+    'get /dashboarduser/adduserByemail/:id': 'AccountController.addUserEmailPage',
+    'post /dashboarduser/adduserByemail/:id': 'AccountController.addUserEmail',
   
 //Edit user into my account
 'get /dashboarduser/edituseraccount/:id': 'UserController.editUserAccountpage',
 'post /dashboarduser/edituseraccount/:id': 'UserController.editUserAccount',
 
-//Add transaction for account
+//Delete User account 
+'get /dashboarduser/deleteuseraccount/:id': 'UserController.deleteUserAccount',
+
+
+//List of transaction 
+  'get /dashboarduser/tr/:id': 'TransactionController.viewTranscation',
+
+//Add transaction 
   'get /dashboarduser/addtransactionToaccount/:id': 'TransactionController.addTransactionPage',
   'post /dashboarduser/addtransactionToaccount/:id': 'TransactionController.addTransaction',
 
-//List of transaction for account
+//edit  transaction 
+'get /dashboarduser/tr/edituserTransaction/:id': 'TransactionController.editUserTransactionpage',
+'post /dashboarduser/tr/edituserTransaction/:id': 'TransactionController.editUserTransaction',
+
+//Delete User transaction 
+'get /dashboarduser/tr/deleteuserTranscation/:id': 'TransactionController.deleteUserTranscation',
+
 
 'get /dashboarduser/logout': 'AuthController.logout'
 

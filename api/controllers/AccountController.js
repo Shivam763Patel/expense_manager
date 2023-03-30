@@ -42,6 +42,46 @@ module.exports = {
             }
         
      },
+
+
+     addUserEmailPage: async (req,res) => {
+ 
+        const id = req.params.id
+        return res.view('addUserByEmail', {all: id})
+        // await Account.find({ where: {accountid: id} }).exec(function(err, result){
+        //     console.log('add account page opend',result);
+        //     if(err){
+        //         return err
+        //     }
+        //     return res.view('addUserAccount', {articles: result})
+        // })
+    
+    },
      
+
+           //Add user to account by Email
+
+           addUserEmail: async(req,res) => {
+
+            console.log('for add user by email')
+            const accountname= req.body.accountname
+            const id = req.params.id
+            console.log("for add account id", id)
+            await Account.create({
+
+                accountid: id ,
+                accountname: accountname
+            })
+            .fetch()
+            .then(result => {
+                console.log("added data", result)
+                console.log('add user',req.user.userid)
+                const id = req.user.userid
+                // return res.view('dashboard', {all: id})
+                return res.redirect(`/dashboarduser/${id}`)
+            
+            })
+        },
+        
 };
 

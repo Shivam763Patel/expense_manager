@@ -35,8 +35,11 @@ module.exports = {
             via: 'accountid'
         },
 
-        
-     
+        userAccountid:
+        {
+              model: 'account'
+        }
+
       
     },
 

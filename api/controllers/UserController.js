@@ -88,7 +88,8 @@ module.exports = {
                 if(err){
                     return err
                 }
-                return res.view('editUserAccount', {articles: result})
+                const acc = result.accountid
+                return res.view('editUserAccount', {articles: result, all: acc })
             })
         
         },
@@ -117,6 +118,19 @@ module.exports = {
             
             })
         },
+
+
+    //Delete account for user
+    deleteUserAccount: async (req, res) => {
+        const id = req.params.id
+     
+        await Account.destroy({ id: id })
+            .then(result => {
+                const deleteuserid = req.user.userid
+                return res.redirect(`/dashboarduser/${deleteuserid}`)
+         
+            })
+    },
 
 
     }

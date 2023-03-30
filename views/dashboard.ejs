@@ -103,7 +103,7 @@ ul ul a {
 }
 
 .account{
-    border: 2px solid #aaa;
+    border: 3px solid #aaa;
     padding: 10px;
     box-shadow: 1px 1px 1px 1px #eee;
     margin-bottom: 30px;
@@ -185,6 +185,10 @@ ul ul a {
                 
               </li>
 
+              <li class="active">
+                <a href="/dashboarduser/adduserByemail/<%= all%> " aria-expanded="false" class="ff">Add new account by email</a>
+              
+            </li>
               <li class="sec">
                 <a href="/dashboarduser/logout" aria-expanded="false" class="get user"> Logout </a>
               
@@ -205,11 +209,11 @@ ul ul a {
       <div id="content">
         <nav class="navbar navbar-expand-lg navbar-light bg-light">
             <div class="container-fluid">
-    
+<!--     
                 <button type="button" id="sidebarCollapse" class="btn btn-info">
                     <i class="fas fa-align-left"></i>
                     <span> Menu</span>
-                </button>
+                </button> -->
     
             </div>
         </nav>
@@ -234,18 +238,18 @@ ul ul a {
       
                     <div class="my-2">
 
-                        <a href="/dashboarduser/edituseraccount/<%= data.id %> " class="btn btn-primary"> Edit </a>
+                        <a href="/dashboarduser/edituseraccount/<%= data.id %> " class="btn btn-outline-success"> Edit </a>
 
-                        <a href="/dashboarduser/tr/<%= data.id %> " class="btn btn-primary"> View </a>
+                        <a href="/dashboarduser/tr/<%= data.id %> " class="btn btn-outline-info"> View </a>
 
-                          <form class="d-inline" action="/dashboarduser/delete/<%= data.id %>" method="post"> 
-                            <input type="submit" value="Delete" class="btn btn-danger"> 
+                          <form class="d-inline" action="/dashboarduser/deleteuseraccount/<%= data.id %>" onclick="return confirm('Are you want to delete this account')" method="get"> 
+                            <input type="submit" value="Delete" class="btn btn-outline-danger" > 
 
                             <br> </br>
+                        </form>
 
-                            <a href="/dashboarduser/addtransactionToaccount/<%= data.id %> " class="btn btn-success"> Add transaction </a>
+                            <a href="/dashboarduser/addtransactionToaccount/<%= data.id %> " class="btn btn-outline-primary"> Add transaction </a>
         
-                          </form>
         
     
                     </div>
@@ -269,11 +273,11 @@ ul ul a {
 
 <script>
 
-$(document).ready(function () {
+// $(document).ready(function () {
 
-$('#sidebarCollapse').on('click', function () {
-    $('#sidebar').toggleClass('active');
-});
+// $('#sidebarCollapse').on('click', function () {
+//     $('#sidebar').toggleClass('active');
+// });
 
-});
+// });
 </script>

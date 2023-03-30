@@ -19,7 +19,8 @@ module.exports = {
         if(err){
             return err
         }
-        return res.view('addTransaction', {articles: result})
+        const acc = result.accountid
+        return res.view('addTransaction', {articles: result, all: acc})
     })
 
     },
@@ -46,9 +47,9 @@ module.exports = {
             .then(result => {
                 console.log("added data", result)
                
-                const id = result.transactionid
+                // const id = result.transactionid
                 console.log(id)
-                return res.view(`transactionPage/${id}`)
+                return res.redirect(`/dashboarduser/tr/${id}`)
             
             })
         },
@@ -60,7 +61,8 @@ module.exports = {
             const user = await Transaction.find({ where: {transactionid: userid} }).sort([
                 { createdAt: 'DESC' },
               ]);
-            return res.view('transactionPage', {  transactionid: user  })
+          
+            return res.view('transactionPage', {  transactionid: user , all: userid })
             }
        
                 catch(err){
@@ -69,5 +71,60 @@ module.exports = {
             
          },
 
+
+         //GET: Edit transcation page
+
+         editUserTransactionpage: async (req,res) => {
+ 
+            const id = req.params.id
+     
+            await Transaction.findOne({id: id}).exec(function(err, result){
+                console.log(result);
+                if(err){
+                    return err
+                }
+                
+                const acc = result.transactionid
+                return res.view('editUserTransaction', {articles: result, all: acc })
+            })
+        
+        },
+
+        editUserTransaction: async(req,res) => {
+
+        
+            const id = req.params.id
+            console.log("Updated id", id)
+            await Transaction.update( {
+        
+                id: id
+            },
+            {
+                accountName: req.body.accountName
+
+            }
+            )
+            .fetch()
+            .then(result => {
+                console.log("Updated data", result)
+                
+                const edituserid = result.transactionid
+                console.log(edituserid)
+                return res.redirect(`/dashboarduser/tr/${edituserid}`)
+            
+            })
+        },
+
+            //Delete account for user
+        deleteUserTranscation: async (req, res) => {
+        const id = req.params.id
+     
+        await Transaction.destroy({ id: id })
+            .then(result => {
+                const deleteuserid = req.user.userid
+                return res.redirect(`/dashboarduser/tr/${deleteuserid}`)
+                
+            })
+    },
 }
 

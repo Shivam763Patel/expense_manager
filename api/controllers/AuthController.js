@@ -158,7 +158,7 @@ module.exports = {
 
     logout: async function (req, res) {
         try {
-              res.clearCookie('token').redirect('/login')
+              res.clearCookie('tokenall').redirect('/login')
               res.status(200).json({
                     statusCode: 200,
                     message: 'Logout'

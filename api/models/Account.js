@@ -31,6 +31,13 @@ module.exports =
             via: 'transactionid'
 
       
+        },
+
+        userAccountid:
+        {
+          collection: 'user',
+          via: 'userAccountid'
+
         }
           
 
