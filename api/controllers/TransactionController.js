@@ -19,6 +19,7 @@ module.exports = {
         if(err){
             return err
         }
+        
         const acc = result.accountid
         return res.view('addTransaction', {articles: result, all: acc})
     })
@@ -61,7 +62,7 @@ module.exports = {
             const user = await Transaction.find({ where: {transactionid: userid} }).sort([
                 { createdAt: 'DESC' },
               ]);
-          
+              
             return res.view('transactionPage', {  transactionid: user , all: userid })
             }
        
@@ -84,7 +85,8 @@ module.exports = {
                     return err
                 }
                 
-                const acc = result.transactionid
+                const acc = result.accountid
+                console.log('user id',acc)
                 return res.view('editUserTransaction', {articles: result, all: acc })
             })
         
@@ -107,9 +109,9 @@ module.exports = {
             .fetch()
             .then(result => {
                 console.log("Updated data", result)
-                
                 const edituserid = result.transactionid
                 console.log(edituserid)
+              
                 return res.redirect(`/dashboarduser/tr/${edituserid}`)
             
             })

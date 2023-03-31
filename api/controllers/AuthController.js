@@ -122,15 +122,35 @@ module.exports = {
             console.log('userdata',userData)
             bcrypt.compare(password, userData.password, function (err, result) {
                 console.log(result)
-                if(err){
+             
+                if(result){
 
-                    console.log(err)
-                }
-                else{
+                    console.log('email',userData.email)
+                    const jwt_secret = process.env.JWT_KEY || 'secret'
+                    const token = jwt.sign(
+                    {
+                        email: userData.email,
+                        userid: userData.id
+
+                    },
+                    jwt_secret,
+                    { expiresIn: '12h' }
+                    
+                  );
+
+                  const result = { email: userData.email, username: userData.username }
+                    res.cookie('tokenall', token, { httpOnly: true })
+                    
+                // .status(200).send({
+                // //     message: 'Login successfull',
+                // //     data: result,
+                // //     token: token,
+                // //   });
+
                     console.log('ghfhf',userData);
                     const id= userData.id
                     console.log('hghjkgufy',id)
-                    res.redirect('/dashboarduser/'+id)
+                    return res.redirect('/dashboarduser/'+id)
                 }
             })
             

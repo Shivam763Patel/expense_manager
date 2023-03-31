@@ -10,10 +10,40 @@
         <div class="form-group">
             <label for="title"> Account name </label>
             
-            <input type="text" name="accountname" class="form-control" value= "<%= articles.accountName %>" required="true">
+            <input type="text" name="accountName" class="form-control" value= "<%= articles.accountName %>" required="true">
              
         </div>
 
+        <div class="form-group">
+            <label for="detail"> Account Type </label> 
+            
+          
+            <select class="form-select" 
+
+            name="accountType" 
+            aria-label="Default select example" 
+            id="accountType" required="true">
+
+            <option selected> value= "<%= articles.accountType %>" </option> 
+            <option value="Expense">Expense</option>
+      
+
+          </select>
+    </div>
+
+    <div class="form-group">
+        <label for="title"> Transaction Amount </label>
+        
+        <input type="text" name="transactionAmount" class="form-control" value= "<%= articles.transactionAmount %>" required="true">
+         
+    </div>
+
+    <div class="form-group">
+        <label for="title"> Transaction Date </label>
+        
+        <input type="text" name="transactionAmount" class="form-control" value= "<%= articles.transactionDate %>" required="true">
+         
+    </div>
     
         <input type="submit" type="button" class="btn btn-primary">
         

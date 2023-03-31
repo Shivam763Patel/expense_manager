@@ -33,13 +33,14 @@ module.exports =
       
         },
 
-        userAccountid:
+        emailAccountid:
         {
           collection: 'user',
-          via: 'userAccountid'
+          via: 'useremailAccountid',
+          through: 'accountbyemail'
 
         }
-          
+      
 
     
     

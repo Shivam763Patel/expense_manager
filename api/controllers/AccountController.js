@@ -5,6 +5,8 @@
  * @help        :: See https://sailsjs.com/docs/concepts/actions
  */
 
+
+
 module.exports = {
   
     info_account: async function (req, res) {
@@ -47,7 +49,9 @@ module.exports = {
      addUserEmailPage: async (req,res) => {
  
         const id = req.params.id
-        return res.view('addUserByEmail', {all: id})
+
+        
+        return res.view('addUserByEmail', {all: id })
         // await Account.find({ where: {accountid: id} }).exec(function(err, result){
         //     console.log('add account page opend',result);
         //     if(err){
@@ -64,15 +68,21 @@ module.exports = {
            addUserEmail: async(req,res) => {
 
             console.log('for add user by email')
-            const accountname= req.body.accountname
+            const email= req.body.email
             const id = req.params.id
-            console.log("for add account id", id)
-            await Account.create({
+            console.log('user id',id)
+            console.log("for add user by email into account id", id)
 
-                accountid: id ,
-                accountname: accountname
+
+
+             const user = await User.find({
+
+                email: email
             })
-            .fetch()
+            console.log('user data',user)
+            const usernew = user[0].id
+            console.log('user id for acc',usernew)
+            await Account.addToCollection(id, 'emailAccountid', usernew)
             .then(result => {
                 console.log("added data", result)
                 console.log('add user',req.user.userid)

@@ -145,7 +145,7 @@ ul ul a {
 
 .col-md-3{
   padding-right: 7px;
-  width: 90%;
+  width: auto;
 
 }
 
@@ -185,19 +185,12 @@ ul ul a {
                 
               </li>
 
-              <li class="active">
-                <a href="/dashboarduser/adduserByemail/<%= all%> " aria-expanded="false" class="ff">Add new account by email</a>
-              
-            </li>
               <li class="sec">
                 <a href="/dashboarduser/logout" aria-expanded="false" class="get user"> Logout </a>
               
             </li>
 
-              <li class="sec">
-                <a href="/user" aria-expanded="false" class="get user">User detail</a>
-              
-            </li>
+           
           </ul>
       </nav>
 
@@ -249,8 +242,9 @@ ul ul a {
                         </form>
 
                             <a href="/dashboarduser/addtransactionToaccount/<%= data.id %> " class="btn btn-outline-primary"> Add transaction </a>
+                            <br></br>
         
-        
+                            <a href="/dashboarduser/adduserByemail/<%= data.id %> " class="btn btn-outline-success"> Add account by email </a>
     
                     </div>
                 </div>

@@ -35,9 +35,12 @@ module.exports = {
             via: 'accountid'
         },
 
-        userAccountid:
+        useremailAccountid:
         {
-              model: 'account'
+          collection: 'account',
+          via: 'emailAccountid',
+          through: 'accountbyemail'
+
         }
 
       

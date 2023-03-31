@@ -219,62 +219,89 @@ ul ul a {
 
 
        <ol class="breadcrumb">
-           <li class="breadcrumb-item"> <a href="/dashboarduser/<%= all %>"> Home </a> </li>
+           <li class="breadcrumb-item"> <a href="/dashboarduser/<%= all %>"> Home </a> </li>  
            <li class="breadcrumb-item active"> Add Transaction </li>
            </ol>
 
 
-   <div class="container">
- 
-       <div class="row">
-
-
+<div class="container">
+   <div class="row">
       
-<div class="home-course-title" id="title2">
-   Transaction list for Account
-</div>
-
-
-    <%
-   
-    if(transactionid.length)  { %>
-       <div class="row">
-
-
-       <% for(let data of transactionid)  { %>
-           <div class="col-md-3">
-
-
-               <div class="account">
-                   <h3> <%= data.accountName %> </h3>
-                   <hr>
-    
-                   <div class="my-2">
-
-
-                       <a href="/dashboarduser/tr/edituserTransaction/<%= data.id %> " class="btn btn-outline-primary"> Edit </a>
-
-
-                           <form class="d-inline" action="/dashboarduser/tr/deleteuserTranscation/<%= data.id %>" onclick="return confirm('Are you want to delete this transaction')" method="get"> 
-                              <input type="submit" value="Delete" class="btn btn-outline-danger" > 
-  
-                              <br> </br>
-      
-                         </form>
-      
-  
-                   </div>
-               </div>
-           </div>
-       <% } %>
-   </div>
-       <% }  else { %>
-   <div> No account available </div>
-   <% } %>   
-  
-        </div>
+       <div class="home-course-title" id="title2">
+           Transaction list for Account
        </div>
-    </div>
+      
+     <div class="col-10">
+       <table class="table table-bordered">
+         <thead>
+           <tr>
+             <th scope="col">Account Name</th>
+             <th scope="col">Account Type</th>
+             <th scope="col">Transaction Amount</th>
+             <th scope="col">Transaction Date</th>
 
 
-</main>
+             <th scope="col">Actions</th>
+           </tr>
+         </thead>
+         <tbody>
+           <%
+   
+           if(transactionid.length)  { %>
+              <div class="row">
+               <tr>
+              <% for(let data of transactionid)  { %>
+              
+         
+         
+             <td> <%= data.accountName %> </td>
+
+             <td> <%= data.accountType %> </td>
+
+             <td> <%= data.transactionAmount %> </td>   
+
+              <td> <%= data.transactionDate %> </td>
+
+             <td>
+
+               <a href="/dashboarduser/tr/deleteuserTranscation/<%= data.id %>" button type="button"  onclick="return confirm('Are you want to delete this transaction')" method="get" class="btn btn-danger"> <i class="fas fa-trash"></i> </button> </a>
+
+               <a href="/dashboarduser/tr/edituserTransaction/<%= data.id %>" button type="button" class="btn btn-success"><i class="fas fa-edit"></i> </button> </a>
+
+
+                       
+             </td>
+           </tr>
+
+
+           <% } %>
+      
+         </tbody>
+       </table>
+       <% } else { %>
+           <div> No category available </div>
+           <% } %>
+     </div>
+   </div>
+ </div>
+</body>
+
+
+</html>
+
+
+<script>
+
+
+$(document).ready(function () {
+
+
+$('#sidebarCollapse').on('click', function () {
+   $('#sidebar').toggleClass('active');
+});
+
+
+});
+</script>
+
+

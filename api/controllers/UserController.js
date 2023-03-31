@@ -60,7 +60,9 @@ module.exports = {
            addUserAccount: async(req,res) => {
 
             console.log('for add user')
+            console.log('kjkj',req.body);
             const accountname= req.body.accountname
+            console.log('acc name',accountname)
             const id = req.params.id
             console.log("for add account id", id)
             await Account.create({
