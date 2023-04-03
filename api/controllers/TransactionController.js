@@ -57,15 +57,19 @@ module.exports = {
 
         viewTranscation: async function (req, res) {
             try{
-            const userid = req.params.id
-            console.log("userid", userid);
-            const user = await Transaction.find({ where: {transactionid: userid} }).sort([
+            const uuserid = req.params.id
+            console.log("userid", uuserid);
+         
+      
+            const user = await Transaction.find({ where: {transactionid: uuserid} }).sort([
                 { createdAt: 'DESC' },
               ]);
-              
-            return res.view('transactionPage', {  transactionid: user , all: userid })
+
+              const id = req.user.userid
+              console.log('data new',id)
+            return res.view('transactionPage', {  transactionid: user , all: id })
             }
-       
+            
                 catch(err){
                     console.log(err);
                 }
@@ -87,7 +91,10 @@ module.exports = {
                 
                 const acc = result.accountid
                 console.log('user id',acc)
-                return res.view('editUserTransaction', {articles: result, all: acc })
+
+                const data = result.transactionid
+                console.log('transaction id',data)
+                return res.view('editUserTransaction', {articles: result, all: data })
             })
         
         },

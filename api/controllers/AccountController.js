@@ -50,8 +50,10 @@ module.exports = {
  
         const id = req.params.id
 
-        
-        return res.view('addUserByEmail', {all: id })
+        const data = req.user.userid
+        console.log('data user id',data)
+        return res.view('addUserByEmail', {all: id , allnew: data})
+      
         // await Account.find({ where: {accountid: id} }).exec(function(err, result){
         //     console.log('add account page opend',result);
         //     if(err){

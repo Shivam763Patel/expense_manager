@@ -31,5 +31,8 @@ UserController: {
 AccountController: {
   '*' : 'isAuth'
 }
-
+,
+TransactionController:{
+  '*': 'isAuth'
+}
 };

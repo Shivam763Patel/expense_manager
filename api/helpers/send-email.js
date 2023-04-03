@@ -42,7 +42,7 @@ module.exports = {
       service: "gmail",
       auth: {
         user: "shivamp@zignuts.com",
-        pass: "atev nive fztc yndc"
+        pass: "dxnp parr rtgl myos"
       }
     });
 

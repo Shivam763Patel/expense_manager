@@ -9,10 +9,10 @@ module.exports = async (req,res,proceed) => {
                     console.log(token)
              
                     const jwt_secret=process.env.JWT_KEY || 'secret'
-                    console.log(jwt_secret)
+                    console.log('jwt data',jwt_secret)
              
                     const decoded = jwt.verify(token,jwt_secret)
-                    console.log(decoded)
+                    console.log('auth data',decoded)
                     // req.user = decoded
                     // console.log(req.user)
                     // next()
@@ -23,7 +23,8 @@ module.exports = async (req,res,proceed) => {
                         // const user  = await User.findOne({ email: decoded.email, userid: decoded.id});
                        
                         // console.log('auth user deatils',user)
-                        req.user = decoded
+                        req.user= decoded
+
                         console.log('data req user'+req.user)
                         proceed()
                         // return res.redirect('/dashboarduser')
