@@ -57,7 +57,9 @@ module.exports = {
 
         viewTranscation: async function (req, res) {
             try{
-            const uuserid = req.params.id
+            const uuserid = req.params.id 
+           const { skip=1, limit=10 } = req.query
+    
             console.log("userid", uuserid);
          
       
@@ -65,11 +67,17 @@ module.exports = {
                 { createdAt: 'DESC' },
               ]);
 
+            // const pagedata = await Transaction.find({}).skip(skip*limit).limit(limit)
+       
+            if (skip && limit) {
+                let result = await Transaction.find({}).limit(limit).skip(skip * limit)
+            
               const id = req.user.userid
               console.log('data new',id)
-            return res.view('transactionPage', {  transactionid: user , all: id })
-            }
+            return res.view('transactionPage', {  transactionid: user , all: id , page: result})
             
+        }
+    }
                 catch(err){
                     console.log(err);
                 }
@@ -89,8 +97,6 @@ module.exports = {
                     return err
                 }
                 
-                const acc = result.accountid
-                console.log('user id',acc)
 
                 const data = result.transactionid
                 console.log('transaction id',data)
@@ -104,7 +110,7 @@ module.exports = {
         
             const id = req.params.id
             console.log("Updated id", id)
-            await Transaction.update( {
+            await Transaction.updateOne( {
         
                 id: id
             },
@@ -116,11 +122,12 @@ module.exports = {
             .fetch()
             .then(result => {
                 console.log("Updated data", result)
+       
                 const edituserid = result.transactionid
                 console.log(edituserid)
               
                 return res.redirect(`/dashboarduser/tr/${edituserid}`)
-            
+           
             })
         },
 

@@ -24,11 +24,31 @@
             aria-label="Default select example" 
             id="accountType" required="true">
 
-            <option selected> value= "<%= articles.accountType %>" </option> 
-            <option value="Expense">Expense</option>
-      
+             
+
+            <!-- <option class="selected" > <%= articles.accountType %> </option> -->
+
+                        <!-- <option value="Income" option.value === ' <%= articles.accountType %> ' ? 'selected' : 'option.value' %> Income</option>
+                        <option value="Transfer" option.value === ' <%= articles.accountType %> ' ? 'selected' : 'option.value' %> Transfer</option>
+                        <option value="Expense" option.value === ' <%= articles.accountType %> ' ? 'selected' : 'option.value' %> Expense</option> -->
+
+                        <% let trType = ['Income', 'Expense', 'Transfer'] %>
+
+                        <% for (let i = 0; i < trType.length; i++) { %>
+                            <% if (articles.accountType === trType[i]) { %>
+                                <option value="<%= trType[i] %>" selected><%= trType[i] %></option>
+                            <% } else { %>
+                                <option value="<%= trType[i] %>"><%= trType[i] %></option>
+                            
+                            <% } %>
+                        
+                        <% } %>
+
+                      
+                
 
           </select>
+
     </div>
 
     <div class="form-group">

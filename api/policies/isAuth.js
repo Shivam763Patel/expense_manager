@@ -25,7 +25,7 @@ module.exports = async (req,res,proceed) => {
                         // console.log('auth user deatils',user)
                         req.user= decoded
 
-                        console.log('data req user'+req.user)
+                        // console.log('data req user'+req.user)
                         proceed()
                         // return res.redirect('/dashboarduser')
                         // console.log('auth data',req.user)
