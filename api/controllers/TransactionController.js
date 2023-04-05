@@ -58,8 +58,7 @@ module.exports = {
         viewTranscation: async function (req, res) {
             try{
             const uuserid = req.params.id 
-           const { skip=1, limit=10 } = req.query
-    
+
             console.log("userid", uuserid);
          
       
@@ -67,17 +66,21 @@ module.exports = {
                 { createdAt: 'DESC' },
               ]);
 
+
+         const { page , limit} = req.query
+    
             // const pagedata = await Transaction.find({}).skip(skip*limit).limit(limit)
-       
-            if (skip && limit) {
-                let result = await Transaction.find({}).limit(limit).skip(skip * limit)
+              
+            if (page && limit) {
+        const result = await Transaction.find({}).limit(limit*1).skip(page * limit)
             
               const id = req.user.userid
               console.log('data new',id)
-            return res.view('transactionPage', {  transactionid: user , all: id , page: result})
+            return res.view('transactionPage', {  transactionid: user , all: id })
             
-        }
+        
     }
+}
                 catch(err){
                     console.log(err);
                 }

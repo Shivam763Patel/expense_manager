@@ -49,13 +49,13 @@ module.exports = {
                     
                 console.log(token)
 
-                //For sending email using nodemailer
-                await sails.helpers.sendEmail.with({
+                // //For sending email using nodemailer
+                // await sails.helpers.sendEmail.with({
             
-                    to: req.body.email,
-                    subject: 'Welcome Mail',
-                    text:'Hello from, Expense Manager !!!'
-                });
+                //     to: req.body.email,
+                //     subject: 'Welcome Mail',
+                //     text:'Hello from, Expense Manager !!!'
+                // });
 
                 await Account.create({ 
                     accountid: result.id ,
