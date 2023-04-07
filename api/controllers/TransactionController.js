@@ -13,13 +13,13 @@ module.exports = {
     {
  
         const id = req.params.id
-
+        console.log('data',id)
     await Account.findOne({id: id}).exec(function(err, result){
-        console.log(result);
+        console.log('data',result);
         if(err){
             return err
         }
-        
+    
         const acc = result.accountid
         return res.view('addTransaction', {articles: result, all: acc})
     })
@@ -59,7 +59,7 @@ module.exports = {
             try{
             const uuserid = req.params.id 
 
-            console.log("userid", uuserid);
+            console.log("userid ", uuserid);
          
       
             const user = await Transaction.find({ where: {transactionid: uuserid} }).sort([
@@ -67,7 +67,7 @@ module.exports = {
               ]);
 
 
-         const { page , limit} = req.query
+         const { page=0 , limit=10} = req.query
     
             // const pagedata = await Transaction.find({}).skip(skip*limit).limit(limit)
               
