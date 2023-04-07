@@ -49,13 +49,13 @@ module.exports = {
                     
                 console.log(token)
 
-                // //For sending email using nodemailer
-                // await sails.helpers.sendEmail.with({
+                //For sending email using nodemailer
+                await sails.helpers.sendEmail.with({
             
-                //     to: req.body.email,
-                //     subject: 'Welcome Mail',
-                //     text:'Hello from, Expense Manager !!!'
-                // });
+                    to: req.body.email,
+                    subject: 'Welcome Mail',
+                    text:'Hello from, Expense Manager !!!'
+                });
 
                 await Account.create({ 
                     accountid: result.id ,
@@ -89,10 +89,7 @@ module.exports = {
     },
 
 
-    // viewlogin: (req,res) => {
 
-    //     return res.view('login')
-    // },
 
     login: async (req,res) => 
     {
@@ -140,12 +137,7 @@ module.exports = {
 
                   const result = { email: userData.email, username: userData.username }
                     res.cookie('tokenall', token, { httpOnly: true })
-                    
-                // .status(200).send({
-                // //     message: 'Login successfull',
-                // //     data: result,
-                // //     token: token,
-                // //   });
+           
 
                     console.log('ghfhf',userData);
                     const id= userData.id
@@ -154,15 +146,7 @@ module.exports = {
                 }
             })
             
-            //     console.log('login token:',token)
-            //    // res.redirect('/login')
-
-            //         return res.status(200).json
-            //         ({ 
-            //             message: 'logged in',
-                      
-            //         })
-                    
+ 
         
         }
         

@@ -9,35 +9,6 @@ const bcryptjs = require("bcrypt")
 
 module.exports = {
 
-    
-    // addUserAccount: async (req,res) => {
- 
-    //         const id = req.params.id
-     
-    //         await Account.findOne({id: id}).exec(function(err, result){
-    //             console.log(result);
-    //             if(err){
-    //                 return err
-    //             }
-    //             return res.view('addUserAccount')
-    //         })
-        
-        
-        // const id = req.params.id
-
-        // await Account.findOne({id: id}).create(
-        //     {
-                
-        //         accountname: req.body.accountname
-        //     })
-        //     return res.view('/dashboarduser')
-        //     .catch(err => {
-        //         console.log(err);
-        //         res.status(500).json({
-        //             err: err.message
-        //         })
-        //     })
-        // },
 
      
 
@@ -45,14 +16,7 @@ module.exports = {
  
             const id = req.params.id
             return res.view('addUserAccount', {all: id})
-            // await Account.find({ where: {accountid: id} }).exec(function(err, result){
-            //     console.log('add account page opend',result);
-            //     if(err){
-            //         return err
-            //     }
-            //     return res.view('addUserAccount', {articles: result})
-            // })
-        
+         
         },
         
            //Add user to account by name

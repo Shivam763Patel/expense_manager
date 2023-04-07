@@ -20,25 +20,7 @@ module.exports = {
         console.log('ghfchvgh',user);
         return res.view('dashboard', {  accountid: user, all: userid })
         }
-        // .then((data)=>{
-        //     console.log('jgvhgvh',data);
-        //     res.view('dashboard', {  accountid: data })
-        // })
-            // .then( data => {
-            //     console.log('jgvhgvh',data);
-            //     res.view('dashboard', {  accountid: data })
-            //     // await User.find({})
-            //     //     .then(result => {
-                 
-            //     //         console.log("data", data)
-                  
-            //     //         res.render('dashboard', {  accountid: data, result: result })
-              
-            //     //     })
-            //         // .catch(err => {
-            //         //     console.log(err);
-            //         // })
-            // })
+
             catch(err){
                 console.log(err);
             }
@@ -53,14 +35,7 @@ module.exports = {
         const data = req.user.userid
         console.log('data user id',data)
         return res.view('addUserByEmail', {all: id , allnew: data})
-      
-        // await Account.find({ where: {accountid: id} }).exec(function(err, result){
-        //     console.log('add account page opend',result);
-        //     if(err){
-        //         return err
-        //     }
-        //     return res.view('addUserAccount', {articles: result})
-        // })
+
     
     },
      

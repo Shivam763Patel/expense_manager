@@ -13,22 +13,14 @@ module.exports = async (req,res,proceed) => {
              
                     const decoded = jwt.verify(token,jwt_secret)
                     console.log('auth data',decoded)
-                    // req.user = decoded
-                    // console.log(req.user)
-                    // next()
-
-                    // res.redirect('/dashboarduser')
+          
 
                     if(decoded) {
-                        // const user  = await User.findOne({ email: decoded.email, userid: decoded.id});
-                       
-                        // console.log('auth user deatils',user)
+                      
                         req.user= decoded
 
-                        // console.log('data req user'+req.user)
                         proceed()
-                        // return res.redirect('/dashboarduser')
-                        // console.log('auth data',req.user)
+                     
                     
                     }
                     else{
